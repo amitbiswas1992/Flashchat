@@ -37,7 +37,7 @@ class LogInViewController: UIViewController {
                 print(error!)
             }
             else {
-                print("Log in Succesful")
+                print("Log in Successful")
                 SVProgressHUD.dismiss()
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
