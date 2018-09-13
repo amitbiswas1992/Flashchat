@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
@@ -67,6 +68,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.senderUsername.text = messageArray[indexPath.row].sender
         cell.avatarImageView.image = UIImage(named: "ren")
+        
+        if cell.senderUsername.text == Auth.auth().currentUser?.email as String! {
+            
+            cell.avatarImageView.backgroundColor = UIColor.flatOrange()
+            cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
+        } else {
+            
+            cell.avatarImageView.backgroundColor = UIColor.flatWatermelon()
+            cell.messageBackground.backgroundColor = UIColor.flatGray()
+            
+        }
+        
         return cell
     }
     
@@ -88,7 +101,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func configureTableView(){
         messageTableView.rowHeight = UITableViewAutomaticDimension
-        messageTableView.estimatedRowHeight = 120.0
+        messageTableView.estimatedRowHeight = 150.0
     
     }
     
@@ -103,7 +116,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     
         UIView.animate(withDuration: 0.5)  {
-           self.heightConstraint.constant = 308
+//           self.heightConstraint.constant = 258
             self.view.layoutIfNeeded()
             
             }
@@ -115,7 +128,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         UIView.animate(withDuration: 0.5, animations: {
-            self.heightConstraint.constant = 50
+//            self.heightConstraint.constant = 50
             self.view.layoutIfNeeded()
             })
     
@@ -203,3 +216,4 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
 }
+

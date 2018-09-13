@@ -11,6 +11,7 @@ pod 'Firebase/Auth'
 
 pod 'SVProgressHUD'
 pod 'ChameleonFramework'
+pod 'IQKeyboardManager'
 
 end
 post_install do |installer|
